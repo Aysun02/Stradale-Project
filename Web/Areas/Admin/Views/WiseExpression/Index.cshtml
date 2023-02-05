@@ -1,0 +1,34 @@
+﻿@using Web.Areas.Admin.ViewModels.WiseExpression
+@model WiseExpressionIndexVM
+
+<a class="btn btn-primary" asp-action="create" asp-controller="wiseexpression">Create</a>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Text</th>
+            <th scope="col">Author</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Modified At</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var expression in Model.WiseExpression)
+        {
+            <tr>
+                <td>@expression.Id</td>
+                <td>@expression.Text</td>
+                <td>@expression.Author</td>
+                <td>@expression.CreatedAt.ToShortDateString()</td>
+                <td>@expression.ModifiedAt.ToShortDateString()</td>
+                <td>
+                    <a class="btn btn-primary mb-2" asp-action="update" asp-controller="wiseexpression" asp-route-id="@expression.Id">Update</a>
+                    <form method="post" asp-action="delete" asp-controller="wiseexpression" asp-route-id="@expression.Id">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

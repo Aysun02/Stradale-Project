@@ -1,0 +1,49 @@
+﻿@using Core.Constants
+@using Web.Areas.Admin.ViewModels.Drink
+@model DrinkUpdateVM
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+
+                        <p class="card-description">
+                            Menu's Drinks
+                        </p>
+                        <form enctype="multipart/form-data" method="post" asp-action="update" asp-controller="drink" class="forms-sample">
+                            <div class="form-group">
+                                <label asp-for="DrinkName">Drink's Name</label>
+                                <input class="form-control" asp-for="DrinkName">
+                                <span asp-validation-for="DrinkName"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MediumPrice">Drink's Medium Price</label>
+                                <input class="form-control" asp-for="MediumPrice">
+                                <span asp-validation-for="MediumPrice"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="LargePrice">Drink's Large Price</label>
+                                <input class="form-control" asp-for="LargePrice">
+                                <span asp-validation-for="LargePrice"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CategoryId">Category</label>
+                                <select class="form-select" asp-for="CategoryId" asp-items="Model.Categories"></select>
+                                <span asp-validation-for="CategoryId"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Status"></label>
+                                <select asp-for="@Model.Status" asp-items="Html.GetEnumSelectList<ProductStatus>()"></select>
+                                <span asp-validation-for="Status"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary me-2">Submit</button>
+                            <a class="btn btn-danger" asp-action="index" asp-controller="drink"> Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

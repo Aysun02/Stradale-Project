@@ -1,0 +1,37 @@
+﻿@using Web.Areas.Admin.ViewModels.Gallery
+@model GalleryIndexVM
+
+<a class="btn btn-warning" asp-action="create" asp-controller="gallery">Create</a>
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Modified At</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var element in Model.GalleryElements)
+        {
+
+            <tr>
+                <td>@element.Id</td>
+                <td>@element.Title</td>
+                <td><img style="width:100px;height:100px; border-radius:50%" src="~/assets/images/@element.Photo" />
+                <td>@element.CreatedAt.ToShortDateString();</td>
+                <td>@element.ModifiedAt.ToShortDateString();</td>
+                <td>
+                    <form asp-route-id="@element.Id" method="get" asp-action="delete" asp-controller="gallery">
+                        <input id="id" name="id" value="@element.Id" type="hidden" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    <a class="btn btn-primary" asp-action="update" asp-controller="doctor" asp-route-id="@element.Id">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

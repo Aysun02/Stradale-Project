@@ -1,0 +1,38 @@
+﻿@using Web.Areas.Admin.ViewModels.Addition
+@model AdditionIndexVM
+
+<a class="btn btn-warning" asp-action="create" asp-controller="addition">Create</a>
+<table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Ingredient</th>
+            <th scope="col">Price</th>
+            <th scope="col">Category</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Modified At</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var addition in Model.Additions)
+        {
+            <tr>
+                <td>@addition.Id</td>
+                <td>@addition.Ingredient</td>
+                <td>@addition.Price</td>
+                <td>@addition.Category.Title</td>
+                <td>@addition.CreatedAt.ToShortDateString();</td>
+                <td>@addition.ModifiedAt.ToShortDateString();</td>
+                <td>
+                    <form asp-route-id="@addition.Id" method="get" asp-action="delete" asp-controller="addition">
+                        <input id="id" name="id" value="@addition.Id" type="hidden" />
+                        <button type="submit" class="btn btn-danger ">Delete</button>
+                    </form>
+                    <a class="btn btn-primary " asp-action="update" asp-controller="addition" asp-route-id="@addition.Id">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

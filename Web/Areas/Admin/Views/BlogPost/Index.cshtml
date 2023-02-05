@@ -1,0 +1,41 @@
+﻿@using Web.Areas.Admin.ViewModels.BlogPost
+@model BlogPostIndexVM
+
+<a class="btn btn-warning" asp-action="create" asp-controller="blogpost">Create</a>
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Date</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Modified At</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var post in Model.BlogPosts)
+        {
+
+            <tr>
+                <td>@post.Id</td>
+                <td>@post.Date</td>
+                <td>@post.Title</td>
+                <td>@post.Description</td>
+                <td><img style="width:100px;height:100px; border-radius:50%" src="~/assets/images/@post.Photo" />
+                <td>@post.CreatedAt.ToShortDateString();</td>
+                <td>@post.ModifiedAt.ToShortDateString();</td>
+                <td>
+                    <form asp-route-id="@post.Id" method="get" asp-action="delete" asp-controller="blogpost">
+                        <input id="id" name="id" value="@post.Id" type="hidden" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    <a class="btn btn-primary" asp-action="update" asp-controller="blogpost" asp-route-id="@post.Id">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

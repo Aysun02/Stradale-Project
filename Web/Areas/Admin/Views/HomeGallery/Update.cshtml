@@ -1,0 +1,43 @@
+﻿@using Web.Areas.Admin.ViewModels.HomeGallery
+@model HomeGalleryUpdateVM
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+
+                        <p class="card-description">
+                            Home Gallery
+                        </p>
+                        <form enctype="multipart/form-data" method="post" asp-action="update" asp-controller="homegallery" class="forms-sample">
+                            <div class="form-group">
+                                <label asp-for="Title">Title</label>
+                                <input class="form-control" asp-for="Title">
+                                <span asp-validation-for="Title"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Ordinal">Ordinal</label>
+                                <input class="form-control" asp-for="Ordinal">
+                                <span asp-validation-for="Ordinal"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Photo">Photo</label>
+                                <input class="form-control" asp-for="Photo">
+                                <span asp-validation-for="Photo"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary me-2">Submit</button>
+                            <a class="btn btn-danger" asp-action="index" asp-controller="homegallery"> Cancel</a>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

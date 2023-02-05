@@ -1,0 +1,40 @@
+﻿@using Web.Areas.Admin.ViewModels.Drink
+@model DrinkIndexVM
+
+<a class="btn btn-warning" asp-action="create" asp-controller="drink">Create</a>
+<table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Drink Name</th>
+            <th scope="col">Medium Price</th>
+            <th scope="col">Large Price</th>
+            <th scope="col">Category</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Modified At</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var drink in Model.Drinks)
+        {
+            <tr>
+                <td>@drink.Id</td>
+                <td>@drink.DrinkName</td>
+                <td>@drink.MediumPrice</td>
+                <td>@drink.LargePrice</td>
+                <td>@drink.Category.Title</td>
+                <td>@drink.CreatedAt.ToShortDateString();</td>
+                <td>@drink.ModifiedAt.ToShortDateString();</td>
+                <td>
+                    <form asp-route-id="@drink.Id" method="get" asp-action="delete" asp-controller="drink">
+                        <input id="id" name="id" value="@drink.Id" type="hidden" />
+                        <button type="submit" class="btn btn-danger ">Delete</button>
+                    </form>
+                    <a class="btn btn-primary " asp-action="update" asp-controller="drink" asp-route-id="@drink.Id">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

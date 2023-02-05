@@ -1,0 +1,38 @@
+﻿@using Web.Areas.Admin.ViewModels.HomeGallery
+@model HomeGalleryIndexVM
+
+<a class="btn btn-warning" asp-action="create" asp-controller="homegallery">Create</a>
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Ordinal</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Modified At</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var gallery in Model.HomeGalleries)
+        {
+            <tr>
+                <td>@gallery.Id</td>
+                <td>@gallery.Title</td>
+                <td>@gallery.Ordinal</td>
+                <td><img style="width:100px;height:100px; border-radius:50%" src="~/assets/images/@gallery.Photo" />
+                <td>@gallery.CreatedAt.ToShortDateString();</td>
+                <td>@gallery.ModifiedAt.ToShortDateString();</td>
+                <td>
+                    <form asp-route-id="@gallery.Id" method="get" asp-action="delete" asp-controller="homegallery">
+                        <input id="id" name="id" value="@gallery.Id" type="hidden" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    <a class="btn btn-primary" asp-action="update" asp-controller="homegallery" asp-route-id="@gallery.Id">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

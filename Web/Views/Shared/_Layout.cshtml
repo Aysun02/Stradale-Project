@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <title>Stradale</title>
+    <link rel="icon" href="~/images/favicon.png" type="image/gif" sizes="16x16">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+    <meta content="" name="author" />
+    <link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" id="bootstrap">
+    <link href="~/css/mdb.css" rel="stylesheet" type="text/css" id="mdb">
+    <link href="~/css/plugins.css" rel="stylesheet" type="text/css">
+    <link href="~/css/style.css" rel="stylesheet" type="text/css">
+    <link href="~/css/coloring.css" rel="stylesheet" type="text/css">
+    <link href="~/css/scheme-01.css" rel="stylesheet" type="text/css" id="colors">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body class="dark-scheme">
+    <div id="wrapper">
+        <div id="preloader">
+            <div class="preloader1"></div>
+        </div>
+        @await Component.InvokeAsync("Header")
+        @RenderBody()
+        @await Component.InvokeAsync("Footer")
+
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/design.js"></script>
+    </div>
+</body>
+</html>

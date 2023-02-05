@@ -1,0 +1,49 @@
+﻿@using System.Web
+@using Web.ViewModels
+@model GalleryIndexVM
+
+
+<div class="no-bottom no-top" id="content" style="background-size: cover;">
+    <div id="top" style="background-size: cover;"></div>
+
+    <section id="subheader" class="jarallax" style="background-size: cover; z-index: 0;" data-jarallax-original-styles="background-size: cover;">
+
+        <div class="center-y relative text-center" style="background-size: cover;">
+            <div class="container" style="background-size: cover;">
+                <div class="row" style="background-size: cover;">
+                    <div class="col-md-12 text-center" style="background-size: cover;">
+                        <h1>Gallery</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="jarallax-container-0" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; z-index: -100; clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%);"><img class="jarallax-img" src="~/images-g/10.jpg" alt="" style="object-fit: cover; object-position: 50% 50%; max-width: none; position: absolute; top: 0px; left: 0px; width: 1519.2px; height: 534.4px; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; will-change: transform, opacity; margin-top: 80.8px; transform: translate3d(0px, -80.8px, 0px);"></div>
+    </section>
+
+    <section aria-label="section" class="no-top no-bottom" style="background-size: cover;">
+        <div class="container-fluid" style="background-size: cover;">
+            <div id="gallery" class="row g-0" style="position: relative; height: 674.75px; background-size: cover;">
+                @foreach(var element in Model.GalleryElements)
+                {
+                <div class="col-md-4 item" style="position: absolute; left: 506px; top: 0px; background-size: cover;">
+                    <div class="de-image-hover rounded" style="background-size: cover;">
+                        <a href="~/images-g/@element.Photo" class="image-popup">
+                            <span class="dih-title-wrap">
+                                <span class="dih-title">@element.Title</span>
+                            </span>
+                            <span class="dih-overlay"></span>
+                            <img src="~/assets/images/@element.Photo" class="lazy img-fluid" alt="">
+                        </a>
+                    </div>
+                </div>
+            }
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<a asp-action="index" asp-controller="gallery" id="back-to-top"></a>

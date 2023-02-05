@@ -1,0 +1,37 @@
+﻿<header class="transparent">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="de-flex sm-pt10">
+                    <div class="de-flex-col">
+                        <div class="de-flex-col">
+                            <div id="logo">
+                                <a asp-action="index" asp-controller="home">
+                                    <img alt="" src="~/images/logo.png" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="de-flex-col">
+                        </div> 
+                    </div>
+                    <div class="de-flex-col header-col-mid">
+                        <ul id="mainmenu">
+                            <li class="nav-bar"><a asp-action="index" asp-controller="home">Home</a></li>
+                            <li class="nav-bar"><a asp-action="index" asp-controller="menu">Menu</a></li>
+                            <li class="nav-bar"><a asp-action="index" asp-controller="reservation">Reservation</a></li>
+                            <li class="nav-bar"><a asp-action="index" asp-controller="blog">Blog</a></li>
+                            <li class="nav-bar"><a asp-action="index" asp-controller="gallery">Gallery</a></li>
+                            <li class="nav-bar"><a asp-action="index" asp-controller="contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="de-flex-col">
+                        <div class="menu_side_area">
+                            <a asp-action="index" asp-area="admin" asp-controller="home" class="btn-main sm-hide">Admin-Login</a>
+                            <span id="menu-btn"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

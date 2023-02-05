@@ -1,0 +1,16 @@
+﻿@using Web.Areas.Admin.ViewModels.Category
+@model CategoryCreateVM
+
+<form enctype="multipart/form-data" asp-action="create" asp-controller="category" method="post">
+
+    <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <input class="form-control" asp-for="Title">
+        <span asp-validation-for="Title"></span>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary mt-2">Create</button>
+    <a class="btn btn-danger mt-2" asp-action="index" asp-controller="category">Cancel</a>
+</form>

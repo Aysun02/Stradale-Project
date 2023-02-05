@@ -1,0 +1,38 @@
+﻿@using Web.Areas.Admin.ViewModels.Information
+@model InformationIndexVM
+
+<a class="btn btn-warning" asp-action="create" asp-controller="information">Create</a>
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Modified At</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var info in Model.Informations)
+        {
+            <tr>
+                <td>@info.Id</td>
+                <td>@info.Title</td>
+                <td>@info.Description</td>
+                <td><img style="width:100px;height:100px; border-radius:50%" src="~/assets/images/@info.Photo" />
+                <td>@info.CreatedAt.ToShortDateString();</td>
+                <td>@info.ModifiedAt.ToShortDateString();</td>
+                <td>
+                    <form asp-route-id="@info.Id" method="get" asp-action="delete" asp-controller="information">
+                        <input id="id" name="id" value="@info.Id" type="hidden" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    <a class="btn btn-primary" asp-action="update" asp-controller="information" asp-route-id="@info.Id">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

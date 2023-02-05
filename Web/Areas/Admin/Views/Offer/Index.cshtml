@@ -1,0 +1,48 @@
+﻿@using Web.Areas.Admin.ViewModels.Offer
+@model OfferIndexVM
+
+<a class="btn btn-warning" asp-action="create" asp-controller="offer">Create</a>
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Text</th>
+            <th scope="col">Coffee Type 1</th>
+            <th scope="col">Offer 1</th>
+            <th scope="col">Photo 1</th>
+            <th scope="col">Coffee Type 2</th>
+            <th scope="col">Offer 2</th>
+            <th scope="col">Photo 2</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Modified At</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var offer in Model.Offers)
+        {
+            <tr>
+                <td>@offer.Id</td>
+                <td>@offer.Title</td>
+                <td>@offer.Text</td>
+                <td>@offer.CoffeeType1</td>
+                <td>@offer.Offer1</td>
+                <td><img style="width:100px;height:100px; border-radius:50%" src="~/assets/images/@offer.Photo1" />
+                <td>@offer.CoffeeType2</td>
+                <td>@offer.Offer2</td>
+                <td><img style="width:100px;height:100px; border-radius:50%" src="~/assets/images/@offer.Photo2" />
+                <td>@offer.CreatedAt.ToShortDateString();</td>
+                <td>@offer.ModifiedAt.ToShortDateString();</td>
+                <td>
+                    <form asp-route-id="@offer.Id" method="get" asp-action="delete" asp-controller="offer">
+                        <input id="id" name="id" value="@offer.Id" type="hidden" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    <a class="btn btn-primary" asp-action="update" asp-controller="offer" asp-route-id="@offer.Id">Update</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

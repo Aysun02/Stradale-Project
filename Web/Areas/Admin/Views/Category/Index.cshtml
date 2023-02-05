@@ -1,0 +1,34 @@
+﻿@using Web.Areas.Admin.ViewModels.Category
+@model CategoryIndexVM
+
+<a class="btn btn-primary" asp-action="create" asp-controller="category">Create</a>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Modified At</th>
+            <th scope="col">Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Category in Model.Categories)
+        {
+            <tr>
+                <td>@Category.Id</td>
+                <td>@Category.Title</td>
+                <td>@Category.CreatedAt.ToShortDateString()</td>
+                <td>@Category.ModifiedAt.ToShortDateString()</td>
+                <td>
+                    <a class="btn btn-primary mb-2" asp-action="update" asp-controller="category" asp-route-id="@Category.Id">Update</a>
+                    <form method="post" asp-action="delete" asp-controller="category" asp-route-id="@Category.Id">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
